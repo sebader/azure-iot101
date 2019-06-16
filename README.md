@@ -13,6 +13,8 @@ This hands-on lab poses a set of challenges to get you started with hands-on exp
 
  The each step describes the desired outcome. Often there are multiple ways to achive this goal. Every way to solve it, is correct! To help you towards a solution, each step gives you a few hints and links to documentation. Do read those! Sometimes the hints also contain pointers to different alternative ways to solve a challenge.
 
+ Some services may take a few minutes to come up when you deploy them in Azure. Use the provisioning time to read further documentation or plan your next step for challenge you are working on.
+
 
  Scenario
 ============
@@ -104,3 +106,22 @@ There are various services available in Azure which we could use as our warm lay
 [What is Azure SQL Database](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-technical-overview)
 
 [Create an Azure SQL Database](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-single-database-get-started)
+
+## 5) Build a end-user dashboard
+
+
+### Goal of this challenge
+You have a simple but interactive dashboard in place that you can share with end-users to work with the telemetry data from your sensors. The data source is the warm storage that you built up before.
+
+### Useful links
+[What is PowerBI Desktop](https://docs.microsoft.com/en-us/power-bi/desktop-what-is-desktop)
+
+[Get data from Azure into PowerBI](https://docs.microsoft.com/en-us/power-bi/service-azure-and-power-bi)
+
+## 6) BONUS CHALLENGE: Email Notifications when a device gets connected to IoT Hub
+
+
+### Goal of this challenge
+Whenever a device connets to the IoT Hub, you will be notified by email.
+
+### Useful links
