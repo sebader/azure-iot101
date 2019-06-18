@@ -1,4 +1,4 @@
-# Azure IoT 101 - Hands-on Labe
+# Azure IoT 101 - Hands-on Lab
 
 Introduction
 ============
@@ -13,15 +13,15 @@ This hands-on lab poses a set of challenges to get you started with hands-on exp
 
  The each step describes the desired outcome. Often there are multiple ways to achive this goal. Every way to solve it, is correct! To help you towards a solution, each step gives you a few hints and links to documentation. Do read those! Sometimes the hints also contain pointers to different alternative ways to solve a challenge.
 
- Some services may take a few minutes to come up when you deploy them in Azure. Use the provisioning time to read further documentation or plan your next step for challenge you are working on.
+ Some services may take a few minutes to come up when you deploy them in Azure. Use the provisioning time to read further documentation or plan your next step for the challenge you are working on.
 
 
  Scenario
 ============
 
-The lab follows the following scenario: We want to measure certain readings from different environments on our factory shopfloor. As there are currently no sensors installed which would allow us to easily get their data for analysis, we decided to start with a quick prototype. For this we bought a few cheap [Raspberry Pi](https://en.wikipedia.org/wiki/Raspberry_Pi) boards with a [sensor-head](https://www.bosch-sensortec.com/bst/products/all_products/bme280) installed. The sensor can measure temperature, humidity and pressure. 
+The lab is generally the following scenario: We want to measure certain readings from different environments on our factory shopfloor. As there are currently no sensors installed which would allow us to easily get their data for analysis, we decided to start with a quick and easy prototype. For this we bought a few cheap [Raspberry Pi](https://en.wikipedia.org/wiki/Raspberry_Pi) boards with a [sensor-head](https://www.bosch-sensortec.com/bst/products/all_products/bme280) installed. The sensor can measure temperature, humidity and pressure. 
 
-If our project proves some real value in getting and analysing this kind of data, we might later put some more ruggedized hardware in place.
+If our project proves some real value in getting and analysing this kind of data, we might later put some more ruggedized hardware in place. But for now it's really about getting the data out of the shopfloor and onto the cloud where we have a all the tools we need for quick prototyping without putting expensive hardware in our IT data center.
 
 
 Challenges
