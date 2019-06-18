@@ -109,19 +109,35 @@ There are various services available in Azure which we could use as our warm lay
 
 ## 5) Build a end-user dashboard
 
+Since now our pre-processed data is available in a database that can serve it for end-user reporting, it's time to build a first dashboard.
+
+Again, there are many possible ways to solve this challenge. Anything from Excel to a custom visualization using Python. There is also the Microsoft Power BI tool which can be handy for this use case.
 
 ### Goal of this challenge
 You have a simple but interactive dashboard in place that you can share with end-users to work with the telemetry data from your sensors. The data source is the warm storage that you built up before.
 
+The dashboard could is showing for example average temperature and humidity for our device over time.
+
 ### Useful links
 [What is PowerBI Desktop](https://docs.microsoft.com/en-us/power-bi/desktop-what-is-desktop)
+
+Note: If you cannot install the Power BI Desktop tool on your local machine (missing permissions etc.), you can easily just spin up a VM in Azure for the purpose of this lab. For instance, there is the "Data Science VM" template, which comes with Power BI pre-installed. You can deploy it to your Azure subscription from [here](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft-dsvm.dsvm-windows).
 
 [Get data from Azure into PowerBI](https://docs.microsoft.com/en-us/power-bi/service-azure-and-power-bi)
 
 ## 6) BONUS CHALLENGE: Email Notifications when a device gets connected to IoT Hub
+Since we don't want to be in charge in the long run to provision and set up our devices manually, we plan to introduce some self-service for this in the future. However, we would still like to know whenever new devices get created in the IoT Hub or when a device connects for the first time. For this we would like to get a simple email notification.
 
+Using services like Azure Event Grid and Azure Logic Apps, this is again possible without any coding.
 
 ### Goal of this challenge
-Whenever a device connets to the IoT Hub, you will be notified by email.
+Whenever a new device gets created in the IoT Hub or when a device connects for the first time, you will be notified by email.
 
 ### Useful links
+
+[React to IoT Hub events by using Event Grid to trigger actions](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-event-grid#event-types)
+
+[Getting started with Logic Apps](https://docs.microsoft.com/en-us/azure/logic-apps/quickstart-create-first-logic-app-workflow)
+
+[IoT Hub Events tutorial (this is the fast track for this challenge ;-) )](https://docs.microsoft.com/en-us/azure/event-grid/publish-iot-hub-events-to-logic-apps)
+(Note: if you cannot use Office365 to send out emails from Logic Apps, there are also other connectors such as Gmail available)
