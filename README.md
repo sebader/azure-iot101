@@ -5,13 +5,17 @@ Introduction
 
 This hands-on lab poses a set of challenges to get you started with hands-on experience to the Azure IoT stack.
 
+The rough architecture that you will build in this training looks like this - if you follow the one path. However, your solution might look very different and still be absolutely valid! 
+
+![Architecture](Media/Azure-IoT-101-Architecture.png)
+
 ### Prerequesits
 
 - You need an Azure subscription. If you do not have an Azure Subscription yet, you can also do this lab with a [free trial subscription]( https://azure.microsoft.com/en-us/free/)
  - You should have a general idea about Azure. This lab does not include an Azure primer.
  - **Very important:** This training does not provide a step-by-step guide which you just need to click through or paste stuff around. Instead this lab requires you to figure solutions out on your own! If the instructions or hints mention concepts which you are not familiar with, please do not hesitate to either ask your buddies in the training or your favorite search engine :)
 
- The each step describes the desired outcome. Often there are multiple ways to achive this goal. Every way to solve it, is correct! To help you towards a solution, each step gives you a few hints and links to documentation. Do read those! Sometimes the hints also contain pointers to different alternative ways to solve a challenge.
+ The each step describes the desired outcome. Often there are multiple ways to achive this goal. Every way to solve it, is correct! To help you towards a solution, each step gives you a few hints and links to documentation - mostly to the documentation of related Azure services. Do read those! Sometimes the hints also contain pointers to different alternative ways to solve a challenge.
 
  Some services may take a few minutes to come up when you deploy them in Azure. Use the provisioning time to read further documentation or plan your next step for the challenge you are working on.
 
@@ -51,11 +55,12 @@ You have data flowing from the simulated raspi into an Azure IoT Hub.
 
 To verify that our data is flowing into Azure and also to quickly see what the data looks like, we want to deploy a web-based frontend that can to used without much or any coding, schema definition etc.
 
+There is the Azure Time Series Insights service which could suite well for this purpose. But again, you are also free to try other tools as long as they fulfil the goal of the challenge.
+
 ### Goal of this challenge
 Without the need to define a schema on your data, you have deployed a tool that allows you to see your data in a web-frontend and drill into it to see the raw telemetry events.
 
 ### Useful links
-There is the Azure Time Series Insights service which could suite well for this purpose. But again, you are also free to try other tools as long as they fulfil the goal of the challenge.
 
 [What is Time Series Insights](https://docs.microsoft.com/en-in/azure/time-series-insights/time-series-insights-update-overview)
 
@@ -71,6 +76,10 @@ There are various reasons for the cold layer but to name just two important ones
 
 To start with this architecture, we now want to store our incoming data in an unprocessed form for long-term storage.
 
+While there are various storage solutions available, we recommend to go with the easiest one here: Azure Blob Storage, which is a general-purpose object storage. It is integrated with also all Azure services.
+
+Also, there are various ways in Azure how to achieve this and get telemetry data from the IoT Hub into storage. Two simple ways are worth looking into: Azure Stream Analyics (ASA) or IoT Hub routing. You will also use ASA in a later challenge, so it might be helpful to already get started with it here. IoT Hub routing on the other side is even easier to set up. Your choice!
+
 ### Goal of this challenge
 The unprocessed telemetry events are flowing into a storage that suits the needs of a cold storage. The data should be stored in a common text format that can be easily read by any tool (e.g. CSV or JSON).
 
@@ -78,7 +87,7 @@ The unprocessed telemetry events are flowing into a storage that suits the needs
 
 [What is Azure Blob Storage](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blobs-introduction)
 
-[What is Azure Stream Analytics(ASA)](https://docs.microsoft.com/en-us/azure/stream-analytics/stream-analytics-introduction)
+[What is Azure Stream Analytics](https://docs.microsoft.com/en-us/azure/stream-analytics/stream-analytics-introduction)
 
 [Quick start with Stream Analytics](https://docs.microsoft.com/en-us/azure/stream-analytics/stream-analytics-quick-create-portal)
 
@@ -90,6 +99,10 @@ The unprocessed telemetry events are flowing into a storage that suits the needs
 Now that we solved our cold-storage requirements, let's take a look on where we store data for faster access than in a cold storage. This will be our warm layer. Later we want to build some visual dashboards based on this, so the storage that we choose here should be optimized for that.
 
 To reduce the amount of data that we need to store here (think about our costs!), we want to pre-process the incoming data. Our senor is sending data in a high frequency (every 2 seconds). For now we don't need that data in such high resolution for our dashboard. Hence, we only want to store the average readings of the temperature and humidity in 30 second buckets (a.k.a windows).
+
+These kind of calculations on continuously flowing data are called stream processing. In Azure there is the fully managed Azure Stream Analytics service for this. However, if you are more advanced already, you can also take a look at Spark Structured Streaming with Azure Databricks.
+
+There are various services available in Azure which we could use as our warm layer. To name just two possible options here: Azure Cosmos DB or Azure SQL Database. While they will both work here, they are very different offerings. One is a NoSQL database, whereas the other one is a more traditional relational database.
 ### Goal of this challenge
 Telemetry data that was averaged over 30 seconds is being transmitted into a storage service that can serve as a warm storage to which we will later connect a dashboard solution to.
 
@@ -99,13 +112,14 @@ Telemetry data that was averaged over 30 seconds is being transmitted into a sto
 
 [Understand outputs from ASA](https://docs.microsoft.com/en-us/azure/stream-analytics/stream-analytics-define-outputs)
 
-There are various services available in Azure which we could use as our warm layer. To name just two possible options here: Azure Cosmos DB or Azure SQL Database. While they will both work here, they are very different offerings. One is a No-SQL database, whereas the other one is a more traditional relational database.
 
 [What is Cosmos DB](https://docs.microsoft.com/en-us/azure/cosmos-db/introduction)
 
 [What is Azure SQL Database](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-technical-overview)
 
 [Create an Azure SQL Database](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-single-database-get-started)
+
+[Spark Streaming from Azure Event Hubs in Azure Databricks](https://docs.databricks.com/spark/latest/structured-streaming/streaming-event-hubs.html) (Hint: this also works if your source is an IoT Hub)
 
 ## 5) Build a end-user dashboard
 
